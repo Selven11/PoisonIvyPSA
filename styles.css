@@ -7,11 +7,7 @@
     --timeline: #ddd;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Arial', sans-serif;
@@ -50,13 +46,17 @@ body {
     margin: 0 auto;
 }
 
-/* Additional CSS remains unchanged */
 .section {
     padding: 5rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     opacity: 0;
     transform: translateY(50px);
+}
+
+.section h2 {
+    margin-bottom: 2rem;
+    color: var(--primary);
 }
 
 .stats-container {
@@ -171,11 +171,49 @@ body {
     opacity: 1;
 }
 
+.prevention-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.prevention-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.prevention-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.help-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.help-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero p {
         font-size: 1.2rem;
     }
@@ -183,4 +221,4 @@ body {
     .stats-container {
         flex-direction: column;
     }
-}a
+}

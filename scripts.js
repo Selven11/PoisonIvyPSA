@@ -1,4 +1,3 @@
-
 gsap.registerPlugin(ScrollTrigger);
 
 // Hero animation
@@ -58,10 +57,10 @@ function updateTimeline(index) {
         content.style.display = 'none';
         content.style.opacity = 0;
     });
-    
+
     const activeContent = contents[index];
     activeContent.style.display = 'block';
-    
+
     gsap.to(activeContent, {
         opacity: 1,
         duration: 0.5,
