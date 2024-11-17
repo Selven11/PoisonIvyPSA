@@ -2,23 +2,27 @@
     --primary: #2e7d32;
     --secondary: #4caf50;
     --accent: #ff5722;
-    --background: #f5f5f5;
-    --text: #333;
+    --text: #2d3748;
     --timeline: #ddd;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: var(--text);
-    background-color: var(--background);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
 }
 
+/* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    background: linear-gradient(rgba(46, 125, 50, 0.7), rgba(46, 125, 50, 0.7)),
                 url('/api/placeholder/1920/1080');
     background-size: cover;
     background-position: center;
@@ -28,69 +32,111 @@ body {
     text-align: center;
     color: white;
     padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, rgba(248, 249, 250, 1));
 }
 
 .hero-content {
     opacity: 0;
     transform: translateY(50px);
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: -1px;
 }
 
 .hero p {
     font-size: 1.5rem;
     max-width: 800px;
     margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Section Styles */
 .section {
     padding: 5rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     opacity: 0;
     transform: translateY(50px);
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .section h2 {
-    margin-bottom: 2rem;
     color: var(--primary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
 }
 
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+/* Stats Section */
 .stats-container {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    margin-top: 2rem;
     padding: 2rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .stat-card {
     flex: 1;
     text-align: center;
-    padding: 2rem;
+    padding: 2.5rem;
     background: var(--primary);
     color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     opacity: 0;
     transform: scale(0.8);
+    transition: transform 0.3s ease;
+    box-shadow: 0 15px 30px rgba(46, 125, 50, 0.2);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
+/* Timeline Section */
 .timeline-container {
     position: relative;
     padding: 4rem 0;
-    margin-top: 4rem;
 }
 
 .timeline {
@@ -98,6 +144,7 @@ body {
     height: 4px;
     background: var(--timeline);
     margin: 2rem 0;
+    border-radius: 2px;
 }
 
 .timeline-dots {
@@ -107,17 +154,20 @@ body {
 }
 
 .timeline-dot {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background: var(--primary);
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: all 0.3s ease;
+    border: 3px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .timeline-dot.active {
     transform: scale(1.5);
     background: var(--accent);
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.4);
 }
 
 .timeline-labels {
@@ -130,6 +180,12 @@ body {
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+}
+
+.timeline-label:hover {
+    color: var(--primary);
 }
 
 .car {
@@ -139,8 +195,9 @@ body {
     width: 40px;
     height: 40px;
     background: var(--accent);
-    border-radius: 8px;
-    transition: left 0.5s ease;
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
 }
 
 .car::after {
@@ -152,6 +209,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
+/* Timeline Content */
 .content-container {
     margin-top: 3rem;
     min-height: 300px;
@@ -161,16 +219,20 @@ body {
     display: none;
     opacity: 0;
     background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    transition: all 0.5s ease;
 }
 
 .timeline-content.active {
     display: block;
     opacity: 1;
+    transform: translateY(0);
 }
 
+/* Prevention Grid */
 .prevention-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -180,16 +242,23 @@ body {
 
 .prevention-card {
     background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.prevention-card:hover {
+    transform: translateY(-5px);
 }
 
 .prevention-card h3 {
     color: var(--primary);
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
+/* Help Grid */
 .help-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -199,16 +268,24 @@ body {
 
 .help-card {
     background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.help-card:hover {
+    transform: translateY(-5px);
 }
 
 .help-card h3 {
     color: var(--primary);
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -221,4 +298,37 @@ body {
     .stats-container {
         flex-direction: column;
     }
+
+    .section {
+        padding: 3rem 1rem;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .timeline-label {
+        font-size: 0.9rem;
+    }
+
+    .prevention-grid,
+    .help-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    animation: fadeUp 1s ease forwards;
 }
