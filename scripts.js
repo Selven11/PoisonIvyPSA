@@ -1,5 +1,4 @@
 gsap.registerPlugin(ScrollTrigger);
-
 // Hero animation
 gsap.to(".hero-content", {
     opacity: 1,
