@@ -41,7 +41,7 @@ const dots = document.querySelectorAll('.timeline-dot');
 const labels = document.querySelectorAll('.timeline-label');
 const contents = document.querySelectorAll('.timeline-content');
 const car = document.querySelector('.car');
-const positions = [0, 25, 50, 75, 100]; // Updated percentage positions for 5 stages
+const positions = [-1, 23, 47, 71, 95]; // Updated percentage positions for 5 stages
 
 function updateTimeline(index) {
     // Update dots
